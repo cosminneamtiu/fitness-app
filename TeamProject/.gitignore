@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+/client/node_modules/
+/server/node_modules/
+
+# Build outputs
+dist/
+/client/dist/
+/server/dist/
+build/
+/client/build/
+/server/build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Prisma / Database specific
+/server/prisma/dev.db
+/server/prisma/dev.db-journal
+
+# IDE / Editor specific
+.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Optional: Coverage directory
+coverage/
