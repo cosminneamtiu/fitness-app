@@ -1,6 +1,7 @@
 // server/src/index.ts
 import express from 'express';
 import cors from 'cors';
+import app from './app'; // 
 
 // Import Route Handlers
 import authRoutes from './routes/auth';
