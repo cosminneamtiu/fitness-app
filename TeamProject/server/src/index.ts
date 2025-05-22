@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config(); // Load .env variables FIRST - Ensure dotenv is installed (npm install dotenv)
 
 // Import the configured Express app instance from app.ts
-import app from './app';
+import expressApp from './app';
 
 // --- Server Startup ---
 const PORT = process.env.PORT || 3001; // Get port from environment or use default
