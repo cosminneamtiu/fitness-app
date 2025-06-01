@@ -4,6 +4,22 @@ import { useAuth } from '../context/AuthContext';
 // Import BOTH API functions used on this page
 import { getMyRegistrations, cancelRegistration } from '../api/registrations'; // 👈 Ensure both are imported
 import { Link } from 'react-router-dom'; // For the link to classes page
+import './DashboardPage.css';
+
+import img1 from '../assets/1.jpg';
+import img2 from '../assets/2.jpg';
+import img3 from '../assets/3.jpg';
+import img4 from '../assets/4.jpg';
+import img5 from '../assets/5.jpg';
+
+const classImages: { [key: number]: string } = {
+  1: img1,
+  2: img2,
+  3: img3,
+  4: img4,
+  5: img5,
+};
+
 
 // --- Interfaces ---
 interface ClassInRegistration {
@@ -122,41 +138,39 @@ function DashboardPage() {
                                 const isCancelling = currentCancelStatus?.type === 'info';
 
                                 return (
-                                    <li key={reg.id} style={{ border: '1px solid #eee', background: '#f9f9f9', padding: '15px 20px', marginBottom: '15px', borderRadius: '5px',color: '#333', opacity: isCancelling ? 0.7 : 1 }}>
-                                        <h3 style={{ marginTop: 0, marginBottom: '8px' }}>{reg.class.name}</h3>
-                                        <p style={{ margin: '4px 0' }}><strong>Instructor:</strong> {reg.class.instructorName}</p>
-                                        <p style={{ margin: '4px 0' }}><strong>When:</strong> {new Date(reg.class.schedule).toLocaleString([], { dateStyle: 'full', timeStyle: 'short' })}</p>
-                                        <p style={{ margin: '4px 0' }}><strong>Duration:</strong> {reg.class.duration} minutes</p>
+                                    <li key={reg.id} className="registration-card" style={{ display: 'flex', alignItems: 'center', opacity: isCancelling ? 0.7 : 1 }}>
+                                        <img 
+                                            src={classImages[reg.class.id]} 
+                                            alt={reg.class.name} 
+                                        />
+                                        <div style={{ flex: 1 }}>
+                                            <h3 style={{ marginTop: 0, marginBottom: '8px' }}>{reg.class.name}</h3>
+                                            <p style={{ margin: '4px 0' }}><strong>Instructor:</strong> {reg.class.instructorName}</p>
+                                            <p style={{ margin: '4px 0' }}><strong>When:</strong> {new Date(reg.class.schedule).toLocaleString([], { dateStyle: 'full', timeStyle: 'short' })}</p>
+                                            <p style={{ margin: '4px 0' }}><strong>Duration:</strong> {reg.class.duration} minutes</p>
 
-                                        {/* Cancel Button & Status Display */}
-                                        <div style={{ marginTop: '10px' }}>
+                                            {/* Cancel Button & Status Display */}
+                                            <div style={{ marginTop: '10px' }}>
                                             <button
                                                 onClick={() => handleCancel(reg.id)}
-                                                disabled={isCancelling} // Disable button if cancellation is in progress
-                                                style={{
-                                                    background: '#dc3545',
-                                                    color: 'white',
-                                                    border: 'none',
-                                                    padding: '8px 12px',
-                                                    borderRadius: '4px',
-                                                    cursor: isCancelling ? 'not-allowed' : 'pointer',
-                                                }}
+                                                disabled={isCancelling}
+                                                className="cancel-button"
                                             >
                                                 {isCancelling ? 'Cancelling...' : 'Cancel Registration'}
                                             </button>
 
-                                            {/* Display cancellation status message if it exists */}
-                                            {currentCancelStatus && currentCancelStatus.type !== 'info' && ( // Don't show 'Cancelling...' message here
+                                            {currentCancelStatus && currentCancelStatus.type !== 'info' && (
                                                 <p style={{
-                                                    color: currentCancelStatus.type === 'error' ? 'red' : 'green',
-                                                    fontSize: '0.9em',
-                                                    marginTop: '8px',
-                                                    marginBottom: 0,
-                                                    fontWeight: 'bold'
+                                                color: currentCancelStatus.type === 'error' ? 'red' : 'green',
+                                                fontSize: '0.9em',
+                                                marginTop: '8px',
+                                                marginBottom: 0,
+                                                fontWeight: 'bold'
                                                 }}>
-                                                    {currentCancelStatus.message}
+                                                {currentCancelStatus.message}
                                                 </p>
                                             )}
+                                            </div>
                                         </div>
                                     </li>
                                 );

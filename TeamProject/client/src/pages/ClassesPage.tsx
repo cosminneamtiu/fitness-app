@@ -4,6 +4,21 @@ import { getAllClasses, registerForClass } from '../api/classes';
 import { useAuth } from '../context/AuthContext';
 // Import Link and useNavigate
 import { Link, useNavigate } from 'react-router-dom';
+import './ClassesPage.css';
+
+import img1 from '../assets/1.jpg';
+import img2 from '../assets/2.jpg';
+import img3 from '../assets/3.jpg';
+import img4 from '../assets/4.jpg';
+import img5 from '../assets/5.jpg';
+
+const classImages: { [key: number]: string } = {
+    1: img1,
+    2: img2,
+    3: img3,
+    4: img4,
+    5: img5,
+  };
 
 // Define interface matching FitnessClass from api/classes.ts
 interface FitnessClassDisplay {
@@ -78,42 +93,49 @@ function ClassesPage() {
                             // Add logic here later to check if *user* is registered
                             const isUserRegistered = false; // Placeholder
                             const canRegister = isAuthenticated && !isFull && !isUserRegistered;
+                            const imageSrc = classImages[cls.id];
+
+
 
                             return (
-                                <div key={cls.id} /* className="list-item" */ > {/* Add className if defined in CSS */}
-                                    <h2>{cls.name}</h2>
-                                    <p><strong>Type:</strong> {cls.classType} | <strong>Difficulty:</strong> {cls.difficulty}</p>
-                                    <p><strong>Instructor:</strong> {cls.instructorName}</p>
-                                    <p><strong>Schedule:</strong> {new Date(cls.schedule).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })} ({cls.duration} mins)</p>
-                                    {cls.location && <p><strong>Location:</strong> {cls.location}</p>}
-                                    <p><strong>Spots Available:</strong> {cls.capacity - currentRegs} / {cls.capacity}</p>
-                                    <p style={{ fontStyle: 'italic', color: 'var(--fb-color-text-secondary)' }}>{cls.description.substring(0, 150)}...</p> {/* Truncate description */}
+                                <div key={cls.id} className="class-card">
+                                    <div className="class-card-content">
+                                    <img
+                                    src={imageSrc}
+                                    alt={`${cls.name} thumbnail`}
+                                    className="class-card-image"
+                                    />
+                                        <div className="class-card-details">
+                                        <h2>{cls.name}</h2>
+                                        <p><strong>Type:</strong> {cls.classType} | <strong>Difficulty:</strong> {cls.difficulty}</p>
+                                        <p><strong>Instructor:</strong> {cls.instructorName}</p>
+                                        <p><strong>Schedule:</strong> {new Date(cls.schedule).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })} ({cls.duration} mins)</p>
+                                        {cls.location && <p><strong>Location:</strong> {cls.location}</p>}
+                                        <p><strong>Spots Available:</strong> {cls.capacity - (cls._count?.registrations ?? 0)} / {cls.capacity}</p>
+                                        <p style={{ fontStyle: 'italic', color: 'var(--fb-color-text-secondary)' }}>
+                                            {cls.description.substring(0, 150)}...
+                                        </p>
 
-                                    <div className="list-item-actions"> {/* Add className for styling */}
-                                        {/* --- Updated Link for View Details --- */}
-                                        <Link
-                                            to={`/classes/${cls.id}`} // Dynamic path to detail page
-                                            className="button" // Use button class for styling
-                                            style={{ marginRight: '10px' }}
-                                        >
+                                        <div className="list-item-actions">
+                                            <Link to={`/classes/${cls.id}`} className="button details-button">
                                             View Details
-                                        </Link>
-                                        {/* --- End Link --- */}
-
-                                        {isAuthenticated && (
+                                            </Link>
+                                            {isAuthenticated && (
                                             <button
                                                 onClick={() => handleRegisterClick(cls.id)}
-                                                disabled={isFull || isUserRegistered} // Disable if full or user already registered
+                                                disabled={isFull || isUserRegistered}
+                                                className="register-button"
                                             >
-                                                {isFull ? 'Full' : (isUserRegistered ? 'Registered' : 'Register')}
+                                                {isFull ? 'Full' : isUserRegistered ? 'Registered' : 'Register'}
                                             </button>
-                                        )}
-                                        {/* Display registration feedback */}
-                                        {registrationFeedback[cls.id] && (
-                                            <p className={`feedback-message ${registrationFeedback[cls.id].type}`} style={{ marginTop: '10px' }}>
+                                            )}
+                                            {registrationFeedback[cls.id] && (
+                                            <p className={`feedback-message ${registrationFeedback[cls.id].type}`}>
                                                 {registrationFeedback[cls.id].message}
                                             </p>
-                                        )}
+                                            )}
+                                        </div>
+                                        </div>
                                     </div>
                                 </div>
                             );

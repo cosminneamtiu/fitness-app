@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  registrations Registration[]
+}
+
+model FitnessClass {
+  id             Int       @id @default(autoincrement())
+  name           String
+  description    String
+  instructorName String
+  schedule       DateTime
+  duration       Int
+  capacity       Int
+  location       String?
+  difficulty     String
+  classType      String
+  createdAt      DateTime  @default(now())
+  registrations  Registration[]
+}
+
+model Registration {
+  id         Int       @id @default(autoincrement())
+  user       User      @relation(fields: [userId], references: [id])
+  userId     Int
+  class      FitnessClass @relation(fields: [classId], references: [id])
+  classId    Int
+  //date       DateTime  // Add date field to store the registration date
+  //time       String    // Add time field to store the time of registration
+  createdAt  DateTime  @default(now())
+
+  @@unique([userId, classId])
+}

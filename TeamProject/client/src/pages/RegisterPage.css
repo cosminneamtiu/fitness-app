@@ -1,0 +1,106 @@
+.register-container {
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: 2.5rem 1.5rem;
+  background-color: var(--fb-color-bg-content);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px var(--fb-color-shadow);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--fb-color-text-primary);
+}
+
+.register-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.register-message {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+}
+
+.register-message.success {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.register-message.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--fb-color-text-primary);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border: 1.5px solid var(--fb-color-border);
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+  outline-offset: 2px;
+  outline-color: transparent;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: var(--fb-color-accent);
+  outline-color: var(--fb-color-accent);
+  outline-style: solid;
+}
+
+.butreg {
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000;
+  background-color: var(--fb-color-accent);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.butreg:hover,
+.butreg:focus {
+  background-color: #ff7f50;
+  outline: none;
+}
+
+@media (max-width: 480px) {
+  .register-container {
+    margin: 2rem 1rem;
+    padding: 2rem 1rem;
+  }
+
+  .register-title {
+    font-size: 1.8rem;
+  }
+}

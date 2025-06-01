@@ -1,0 +1,166 @@
+/* =========================
+   Class Detail Container
+========================= */
+.class-detail-page {
+  position: relative; /* added for absolute positioning of back button */
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  background-color: var(--fb-color-bg-content);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px var(--fb-color-shadow);
+  color: var(--fb-color-text-primary);
+  display: flex;
+  flex-direction: column; /* changed to column since no image side */
+  gap: 2rem;
+}
+
+/* =========================
+   Left Content Area (content only)
+========================= */
+.class-detail-content {
+  flex: 1;
+}
+
+/* =========================
+   Heading & Subheading
+========================= */
+.class-detail-page h1 {
+  font-size: 2rem;
+  color: #212529;
+  margin-bottom: 0.5rem;
+}
+
+.class-detail-page p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+/* Subheading (class type, difficulty) */
+.class-detail-page .subheading {
+  color: var(--fb-color-text-secondary);
+  font-style: italic;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* =========================
+   Breadcrumb
+========================= */
+.class-detail-page nav[aria-label="breadcrumb"] {
+  font-size: 0.9rem;
+  color: var(--fb-color-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.class-detail-page nav a {
+  color: var(--fb-color-link);
+  text-decoration: none;
+}
+
+.class-detail-page nav a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   Details Section
+========================= */
+.class-detail-page .details-section {
+  border-top: 1px solid var(--fb-color-border);
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.class-detail-page .details-section strong {
+  font-weight: 600;
+}
+
+/* =========================
+   Registration Feedback
+========================= */
+.feedback-message {
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+
+.feedback-message.success {
+  color: green;
+}
+
+.feedback-message.error {
+  color: red;
+}
+
+/* =========================
+   Register Button
+========================= */
+.detailRegister {
+  background-color: var(--fb-color-accent);
+  color: #000;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detailRegister:hover:not(:disabled) {
+  background-color: #FF5722;
+  box-shadow: 0 0 12px rgba(255, 127, 80, 0.6);
+}
+
+.detailRegister:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* =========================
+   Back to Classes Button
+========================= */
+.backButtonFixed {
+  position: absolute; /* changed from fixed */
+  bottom: 2.25rem;
+  right: 1rem;
+
+  background-color: var(--fb-color-accent);
+  color: #000;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px var(--fb-color-shadow);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  z-index: 1000;
+}
+
+.backButtonFixed:hover {
+  background-color: #ff0000;
+  box-shadow: 0 0 12px rgba(255, 127, 80, 0.6);
+  color: #fff;
+}
+
+/* =========================
+   Responsive Styling
+========================= */
+@media (max-width: 768px) {
+  .class-detail-page {
+    padding: 1rem;
+  }
+
+  .detailRegister {
+    width: 100%;
+    text-align: center;
+  }
+
+  .class-detail-page h1 {
+    font-size: 1.6rem;
+  }
+}

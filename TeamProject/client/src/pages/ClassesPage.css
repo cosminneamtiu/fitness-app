@@ -1,0 +1,258 @@
+/* =========================
+   Classes Page Container
+========================= */
+
+.classes-list {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  background-color: var(--fb-color-bg-content);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px var(--fb-color-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* =========================
+   Individual Class Item
+========================= */
+
+.classes-list > div {
+  background-color: var(--fb-color-bg-page);
+  border: 1px solid var(--fb-color-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px var(--fb-color-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.classes-list > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.classes-list h2 {
+  font-size: 1.6rem;
+  color: #212529;
+  margin-bottom: 0.5rem;
+}
+
+.classes-list p {
+  font-size: 1rem;
+  color: var(--fb-color-text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Truncated description styling */
+.classes-list p[style*="italic"] {
+  font-style: italic;
+  color: var(--fb-color-text-secondary);
+}
+
+/* =========================
+   Class Actions (Buttons & Links)
+========================= */
+
+.list-item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.button,
+.list-item-actions button {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 25px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.button {
+  background-color: var(--fb-color-accent);
+  color: white;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #ff7f50;
+}
+
+.list-item-actions button {
+  background-color: var(--fb-color-bg-primary);
+  color: var(--fb-color-text-primary);
+}
+
+.list-item-actions button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* =========================
+   Feedback Message Styles
+========================= */
+
+.feedback-message {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+.feedback-message.success {
+  color: green;
+}
+
+.feedback-message.error {
+  color: red;
+}
+
+/* =========================
+   Responsive Styles
+========================= */
+
+@media (max-width: 768px) {
+  .list-item-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button,
+  .list-item-actions button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* =========================
+   Class Card Layout with Image
+========================= */
+
+.class-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: var(--fb-color-bg-page);
+  box-shadow: 0 4px 10px var(--fb-color-shadow);
+}
+
+.class-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.class-card-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.class-card-image {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.class-card-details {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.class-card-details h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #212529;
+}
+
+.class-card-details p {
+  margin: 0.25rem 0;
+  color: var(--fb-color-text-primary);
+}
+
+/* =========================
+   Shared Action Button Style
+========================= */
+
+.action-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  flex: 1;
+  text-align: center;
+}
+
+/* =========================
+   Buttons with Hover Effects
+========================= */
+
+.details-button {
+  background-color: var(--fb-color-accent);
+  color: #000;
+}
+
+.details-button:hover {
+  background-color: #2196F3;
+  color: #000;
+}
+
+.register-button {
+  background-color: var(--fb-color-accent);
+  color: white;
+}
+
+.register-button:hover:not(:disabled) {
+  background-color: #FF5722;
+  box-shadow: 0 0 12px rgba(255, 127, 80, 0.6);
+}
+
+.register-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .class-card-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .class-card-image {
+    width: 100%;
+    height: 200px;
+    border-right: none;
+    border-bottom: 1px solid var(--fb-color-border);
+  }
+
+  .class-card-details {
+    text-align: center;
+  }
+
+  .list-item-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button,
+  .register-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .action-button {
+    width: 100%;
+  }
+}
